@@ -95,3 +95,46 @@ body .text-center {
 .wi {
     width: 100%;
 }
+
+.loginDiv form{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+th.forVer{
+    padding: 0;
+}
+
+p.vertical {
+    width: 150px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+p.verticalBig {
+    height: 230px;
+    width: 250px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.pps2 td, th {
+    width: 150px;
+}
+
+.pps3 td, th {
+    width: 400px;
+}
+
+.pps4 td, th {
+    width: 400px;
+}

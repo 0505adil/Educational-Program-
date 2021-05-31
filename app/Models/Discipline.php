@@ -9,7 +9,7 @@ class Discipline extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+            protected $fillable = [
         'title_kz',
         'title_ru' ,
         'title_en',
@@ -43,8 +43,8 @@ class Discipline extends Model
         return $this->belongsToMany(Student::class, 'student_disciplines');
     }
 
-    public function teachers()
+    public function advisers()
     {
-        return $this->belongsToMany(Teacher::class, 'teacher_disciplines');
+        return $this->belongsToMany(Adviser::class, 'adviser_disciplines');
     }
 }

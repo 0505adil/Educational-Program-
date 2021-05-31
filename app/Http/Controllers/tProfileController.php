@@ -64,7 +64,7 @@ class tProfileController extends Controller
         $disciplineIds = $request->input('toSend');
 
         foreach ($students as $student){
-            $student->disciplines()->sync($disciplineIds);
+            $student->disciplines()->attach($disciplineIds);
         }
         return view('adviser/tProfile');
     }
@@ -96,14 +96,31 @@ class tProfileController extends Controller
 
     }
 
-    public function report(Request $request){
+    public function report(Request $request, $id){
 
-        $test = view('adviser.report')->render();
-        $pdf = App::make('dompdf.wrapper');
+        $student = Student::with(['group' => function ($groups)  {
+            return $groups->where('adviser_id', Auth::user()->adviser->id);
 
-        $pdf->loadHTML($test-*);
-        return $pdf->stream();
-        return view('adviser/report');
+        }])
+            ->where('id', $id)
+            ->first();
+
+        $sid = $student->id;
+        $disciplines = Discipline::with(['users' => function($sd) use ($sid){
+            return $sd->where('student_id', $sid);
+        }])->get();
+
+//        dd($student);
+//        $test = view('adviser.report')->render();
+//        $pdf = App::make('dompdf.wrapper');
+//
+//        $pdf->loadHTML($test);
+//        return $pdf->stream();
+        return view('adviser/report')->with('student', $student)->with('disciplines', $disciplines);
     }
 
+
+    public function pps(){
+        return view('adviser/pps');
+    }
 }

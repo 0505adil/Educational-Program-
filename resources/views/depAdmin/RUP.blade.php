@@ -23,28 +23,16 @@
                 </select>
                 <div class="d-flex mb-3">
 
-                        <label for="dateFrom" class="col-md-2 col-form-label text-md-left">{{ __('Date From') }}</label>
+                        <label for="dateFrom" class="col-md-2 col-form-label">{{ __('Date From:') }}</label>
 
                         <div class="col-md-4">
-                            <input id="dateFrom" type="date" class="form-control @error('dateFrom') is-invalid @enderror" name="dateFrom">
-
-                            @error('dateFrom')
-                            <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                            @enderror
+                            <input type="text" name="fromDate">
                         </div>
 
-                    <label for="dateTo" class="col-md-2 col-form-label text-md-left">{{ __('Date to') }}</label>
+                    <label for="dateTo" class="col-md-2 col-form-label">{{ __('Date to:') }}</label>
 
                     <div class="col-md-4">
-                        <input id="dateTo" type="date" class="form-control @error('dateTo') is-invalid @enderror" name="dateTo">
-
-                        @error('dateTo')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
+                        <input type="text" name="toDate">
                     </div>
                 </div>
 

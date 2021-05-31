@@ -24,6 +24,10 @@ class RUP extends Model
         return $this->hasOne(Discipline::class, 'rup_id', 'id');
     }
 
+    public function disciplinesBez($ids){
+        return $this->discipline()->whereNotIn('id', $ids);
+    }
+
     public function educationalProgram(){
         return $this->belongsTo(EducationalProgram::class, 'edProgram_id', 'id');
     }

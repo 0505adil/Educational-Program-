@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adviser;
+use App\Models\AdviserDiscipline;
 use App\Models\Discipline;
 use App\Models\RUP;
 use App\Models\Teacher;
@@ -71,8 +73,6 @@ class DepAdminController extends Controller
             );
             Discipline::query()->create($discipline);
         }
-//        , disComponent, disCode, titleKz, titleRu, titleEn, semestr,
-//                     credits, lectures, practises, labs, fromDate, toDate, edProgram_id
         return view('/depAdmin/otherDepDisciplines')->with('r_id', $r_id);
     }
 
@@ -110,12 +110,12 @@ class DepAdminController extends Controller
             );
             Discipline::query()->create($discipline);
             $d_id = Discipline::query()->where('title_en', $ten[$i])->first()->id;
-            $teacher = Teacher::all()->where('id', $teacherId[$i]);
+            $teacher = Adviser::all()->where('id', $teacherId[$i]);
             foreach ($teacher as $t)    {
                 $t->disciplines()->sync($d_id);
             }
-            $teacherDisciplines = TeacherDiscipline::all()
-                ->where('teacher_id',$teacherId[$i])
+            $teacherDisciplines = AdviserDiscipline::all()
+                ->where('adviser_id',$teacherId[$i])
                 ->where('discipline_id', $d_id);
 
             foreach ($teacherDisciplines as $temp){
@@ -132,12 +132,17 @@ class DepAdminController extends Controller
 
     public function teacherLoad() {
 
-        $disciplineIds = TeacherDiscipline::query()->pluck('discipline_id')->all();
+        $disciplineIds = AdviserDiscipline::query()->pluck('discipline_id');
 
-        $rups = RUP::with('discipline')
-            ->join('disciplines', 'disciplines.rup_id', '=', 'r_u_p_s.id')
-            ->whereNotIn('disciplines.id', $disciplineIds)
-            ->get();
+
+        $rups = RUP::with(['discipline' => function($disciplines) use ($disciplineIds) {
+            return $disciplines->whereNotIn('id', $disciplineIds);
+        }])->has('discipline')->get();
+
+
+//            ->select('r_u_p_s.*', 'disciplines.*')
+//            ->join('disciplines', 'disciplines.rup_id', '=', 'r_u_p_s.id')
+//            ->whereNotIn('disciplines.id', $disciplineIds)
 
 
 
@@ -158,12 +163,11 @@ class DepAdminController extends Controller
 
         for($i = 0; $i < count($ten); $i++) {
             $d_id = Discipline::query()->where('title_en', $ten[$i])->first()->id;
-            $teacher = Teacher::all()->where('id', $teacherId[$i]);
-            foreach ($teacher as $t)    {
-                $t->disciplines()->sync($d_id);
-            }
-            $teacherDisciplines = TeacherDiscipline::all()
-                ->where('teacher_id',$teacherId[$i])
+            $teacher = Adviser::all()->where('id', $teacherId[$i])->first();
+            $teacher->disciplines()->attach($d_id);
+
+            $teacherDisciplines = AdviserDiscipline::all()
+                ->where('adviser_id',$teacherId[$i])
                 ->where('discipline_id', $d_id);
             foreach ($teacherDisciplines as $temp){
                 $temp->update(
@@ -176,6 +180,7 @@ class DepAdminController extends Controller
                 );
             }
         }
+
         return view('/depAdmin/RUP');
     }
 

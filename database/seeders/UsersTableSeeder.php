@@ -28,21 +28,9 @@ class UsersTableSeeder extends Seeder
             'role' => 4,
         ]);
 
-        DB::table('teachers')->insert([
-            'name' => 'Abay',
-            'surname' => 'Kudaibergenov',
-        ]);
 
         DB::table('users')->insert([
             [
-                'name' => 'Teacher',
-                'email' => 'teacher@teach.com',
-                'password' => bcrypt('123456789'),
-                'role' => 5,
-                'teacherId' => 2,
-                'studentId' => null,
-                'adviserId' => null
-            ], [
                 'name' => 'Adilet',
                 'email' => 'ad@ad.ad',
                 'password' => bcrypt('123456789'),

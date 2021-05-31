@@ -15,20 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
-Route::get('/test', function() {
-    $group = Group::query()
-        ->with('students')
-        ->find(1);
+//Route::get('/test', function() {
+//    $group = Group::query()
+//        ->with('students')
+//        ->find(1);
+//
+//    dd($group);
+//});
 
-    dd($group);
-});
-
-Route::get('/dulatneverit', function () {
-    return view('primer');
-});
 
 Auth::routes();
 
@@ -59,4 +56,10 @@ Route::get('/tProfile/syllabus/send', [App\Http\Controllers\tProfileController::
 Route::get('/tProfile/myGroups', [App\Http\Controllers\tProfileController::class, 'myGroups'])->name('profile/groups');
 Route::get('/tProfile/reports', [App\Http\Controllers\tProfileController::class, 'reports'])->name('profile/reports');
 Route::get('/report/download', [App\Http\Controllers\tProfileController::class, 'reportDownload'])->name('/report/download');
-Route::get('/report', [App\Http\Controllers\tProfileController::class, 'report'])->name('/report');
+Route::get('/tProfile/report/{id}', [App\Http\Controllers\tProfileController::class, 'report'])->name('/tProfile/report');
+Route::get('/pps', [App\Http\Controllers\tProfileController::class, 'pps'])->name('/pps');
+
+
+Route::get('/iup', [App\Http\Controllers\ZavkafController::class, 'iup'])->name('iup');
+Route::get('/ppsList', [App\Http\Controllers\ZavkafController::class, 'pps'])->name('pps');
+Route::get('/news', [App\Http\Controllers\ZavkafController::class, ' news'])->name('news');

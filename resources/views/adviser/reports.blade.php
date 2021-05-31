@@ -10,7 +10,6 @@
                     <li><a href="/tProfile/myGroups">My Groups</a></li>
                     <li><a href="/tSyllabus ">Syllabus For Students</a></li>
                     <li><a href="/tProfile/reports">Reports</a></li>
-                    <li><a href="">News</a></li>
                 </ul>
             </div>
             <div class="col-10 ">
@@ -27,11 +26,11 @@
                     @foreach($students  as $student)
                         <tr>
                             <td></td>
-                            <td>{{ $student->name. " " .$student->surname }}</td>
+                            <td>{{ $student->name. " " .$student->surname, $id = $student->id }}</td>
                             <td>
-                                <form action="/report/download">
-                                    <input class="btn" type="text" value="Download IEP">
-                                </form>
+
+                                <a href="report/{{$id}}">Dowload IEP</a>
+
                             </td>
                         </tr>
                     @endforeach

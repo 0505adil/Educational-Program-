@@ -24,7 +24,7 @@ class CreateDisciplinesTable extends Migration
             $table->integer('lectures');
             $table->integer('practises');
             $table->integer('labs');
-            $table->BigInteger('rup_id')->unsigned();
+            $table->BigInteger('rup_id')->unsigned()->nullable();
 //            $table->unsignedBigInteger('edProgram_id');
 //            $table->foreign('rup_id')->references('id')->on('r_u_p_s')->onDelete('cascade');
 //            $table->unsignedBigInteger('disciplineComponent_id');

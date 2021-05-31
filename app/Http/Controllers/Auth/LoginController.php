@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,7 +28,7 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected $redirectTo = RouteServiceProvider::Profile;
+
 
     protected function redirectTo()
     {
@@ -39,8 +40,12 @@ class LoginController extends Controller
             return '/admin';
         } else if (auth()->user()->role == 4){
             return '/depAdmin';
+        } else if (auth()->user()->role == 1){
+            return '/zavkaf';
         }
-        return '/home';
+
+        Auth::logout();
+        return redirect()->guest('/login')->with('alert', 'Access Restricted!');
     }
     /**
      * Create a new controller instance.

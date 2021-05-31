@@ -102,6 +102,40 @@ body .text-center {
   width: 100%;
 }
 
+.loginDiv form {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+th.forVer {
+  padding: 0;
+}
+
+p.vertical {
+  width: 150px;
+  transform: rotate(-90deg);
+}
+
+p.verticalBig {
+  height: 230px;
+  width: 250px;
+  transform: rotate(-90deg);
+}
+
+.pps2 td, th {
+  width: 150px;
+}
+
+.pps3 td, th {
+  width: 400px;
+}
+
+.pps4 td, th {
+  width: 400px;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

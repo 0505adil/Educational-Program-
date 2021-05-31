@@ -78,9 +78,7 @@ class ProfileController extends Controller
 
         $sign = $request->file('sign');
 
-        if($sign->getContent() != Auth::user()->password){
-            echo 'Inappropriate sign!!!';
-        } else {
+
             $disciplineIds = $request->input('toSend');
             $studentDisciplines = StudentDiscipline::all()
                 ->where('student_id', Auth::user()->student->id)
@@ -93,7 +91,7 @@ class ProfileController extends Controller
                     ]
                 );
             }
-        }
+
         return view('/student/profile');
 
 

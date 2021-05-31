@@ -17,4 +17,9 @@ class Adviser extends Model
     public function groups(){
         return $this->hasMany(Group::class, 'adviser_id', 'id');
     }
+
+    public function disciplines()
+    {
+        return $this->belongsToMany(Discipline::class, 'adviser_disciplines');
+    }
 }
