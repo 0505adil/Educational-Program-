@@ -21,7 +21,14 @@
 </head>
 <body>
 
+    <div class="container col-12 pt-5">
+
+
+    <h2>Teacher Name: {{ Auth::user()->adviser->name. "   " .  Auth::user()->adviser->surname}}</h2>
     <div class="container p-5 col-12">
+
+        @include('adviser.pps.teacherDisciplines')
+        <br><br>
         @include('adviser.pps.pps1')
         <br><br>
         @include('adviser.pps.pps2')
@@ -33,5 +40,6 @@
         @include('adviser.pps.pps5')
         <br><br>
         @include('adviser.pps.pps6')
+    </div>
     </div>
 </body>

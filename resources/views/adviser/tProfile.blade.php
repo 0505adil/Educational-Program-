@@ -10,6 +10,7 @@
                     <li><a href="/tProfile/myGroups">My Groups</a></li>
                     <li><a href="/tSyllabus ">Syllabus For Students</a></li>
                     <li><a href="/tProfile/reports">Reports</a></li>
+                    <li><a href="/pps">Individual Teacher Plan</a></li>
                 </ul>
             </div>
             <div class="col-10 ">

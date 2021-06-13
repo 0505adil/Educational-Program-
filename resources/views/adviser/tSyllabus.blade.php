@@ -10,18 +10,20 @@
                     <li><a href="/tProfile/myGroups">My Groups</a></li>
                     <li><a href="/tSyllabus">Syllabus For Students</a></li>
                     <li><a href="/tProfile/reports">Reports</a></li>
+                    <li><a href="/pps">Individual Teacher Plan</a></li>
                 </ul>
             </div>
             <div class="col-10 ">
                 <div class="p-3 row">
                     <div class="col-7">
-                        <form action="tProfile/syllabus/filter" >
+                        <form action="{{ route('profile/syllabus/filter') }}">
+
                         <div class="row pl-3">
                             <h1>Students Syllabus</h1>
                         </div>
                             <div class="d-flex">
                                 <h4 class="mr-3">Course:</h4>
-                                <select name="course" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <select name="course" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="course">
                                     @for($i = 1; $i <= 4; $i++)
                                         <option @if(!empty($course) && $course == $i) selected @endif value="{{$i}}">{{$i}}</option>
                                     @endfor
@@ -38,10 +40,11 @@
                             </div>
                             <div class="d-flex">
                                 <h4 class="mr-3">Semestr:</h4>
-                                <select name="semestr" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                    @for($i = 1; $i <= 8; $i++)
-                                        <option @if(!empty($semestr) && $semestr == $i) selected @endif value="{{$i}}">{{$i}}</option>
-                                    @endfor
+                                <select name="semestr" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="semestr">
+
+                                    <option>1</option>
+                                    <option>2</option>
+
                                 </select>
                             </div>
                             <button class="btn btn-success" type="submit">Show</button>
@@ -58,6 +61,7 @@
                                     <th scope="col">Code</th>
                                 </tr>
                             </thead>
+                            @if($disciplines != null)
                             <tbody {{$tdisciplines = $disciplines}}>
 
                                 @foreach($tdisciplines as $discipline)
@@ -71,6 +75,7 @@
 
 
                             </tbody>
+                            @endif
                         </table>
 
                             <select name="groupId" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >

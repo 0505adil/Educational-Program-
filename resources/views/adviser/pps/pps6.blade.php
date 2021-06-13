@@ -1,27 +1,27 @@
-<div>
-    <h2>
+<div class="razmer">
+    <p>
         6. Тәрбие, кәсіби бағдар беру жұмысы, қоғамдық жұмыс, кабинеттерді жабдықтау,ақылы қызмет көрсету, біліктілігін көтеру жұмысы.
         Воспитательная, профориентационная, общественная работа, работа по оказанию платных услуг, оборудованию кабинетов, повышению квалификации
         Educational and social work,vocational guidance, paid services, classroom maintenance, professional development
 
-    </h2>
+    </p>
     <br><br>
     <table border="1" class="pps6">
         <thead>
         <tr>
-            <th rowspan="2">
+            <th class="p-3"  rowspan="2">
                 Рет саны <br>
                 №п.п <br>
                 №
 
             </th>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Жұмыс аталуы <br>
                 Наименование работ <br>
                 Activities
 
             </th>
-            <th colspan="2">
+            <th class="p-3" colspan="2">
                 Орындау туралы мәлімет <br>
                 Сведения о выполнении <br>
                 Implementation <br>
@@ -30,11 +30,11 @@
             </th>
         </tr>
         <tr>
-            <th>Жоспар <br>
+            <th class="p-3">Жоспар <br>
                 План <br>
                 Plan
             </th>
-            <th>Орындалуы <br>
+            <th class="p-3">Орындалуы <br>
                 Выполнение <br>
                 Implementation
             </th>
@@ -57,7 +57,7 @@
             <td><input type="text" class="part2"></td>
         </tr>
         <tr>
-            <td colspan="2">Барлығы        Всего        Total</td>
+            <td colspan="2" class="pl-3">Барлығы        Всего        Total</td>
             <td><input type="text" class="res1"></td>
             <td><input type="text" class="res2"></td>
         </tr>

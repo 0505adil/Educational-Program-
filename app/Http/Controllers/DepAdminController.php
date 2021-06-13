@@ -30,9 +30,9 @@ class DepAdminController extends Controller
 
     public function addRup(Request $request){
         $eduProgramId = $request->input('eduProgram');
-        $dateFrom = $request->input('dateFrom');
-        $dateTo = $request->input('dateTo');
-
+        $dateFrom = $request->input('fromDate');
+        $dateTo = $request->input('toDate');
+//        dd($dateFrom);
         $cycle = $request->input('cycle');
         $component = $request->input('component');
 
@@ -96,35 +96,37 @@ class DepAdminController extends Controller
 
         $teacherId = $request->input('teacher');
 
+        if($tkz)
         for($i = 0; $i < count($tkz); $i++) {
-            $discipline = array(
-                'title_kz' => $tkz[$i],
-                'title_ru' => $tru[$i],
-                'title_en' => $ten[$i],
-                'code' => 1,
-                'credits' => $credits[$i],
-                'semestr' => $semestr[$i],
-                'lectures' => $lectures[$i],
-                'practises' => $practises[$i],
-                'labs' => $labs[$i],
-            );
-            Discipline::query()->create($discipline);
-            $d_id = Discipline::query()->where('title_en', $ten[$i])->first()->id;
-            $teacher = Adviser::all()->where('id', $teacherId[$i]);
-            foreach ($teacher as $t)    {
-                $t->disciplines()->sync($d_id);
-            }
-            $teacherDisciplines = AdviserDiscipline::all()
-                ->where('adviser_id',$teacherId[$i])
-                ->where('discipline_id', $d_id);
-
-            foreach ($teacherDisciplines as $temp){
-                $temp->update(
-                    [
-                        'course' => $course[$i],
-                        'gr_id' => $gr_id[$i],
-                    ]
+            if($tkz[$i] != null && $tru[$i] != null && $ten[$i] != null) {
+                $discipline = array(
+                    'title_kz' => $tkz[$i],
+                    'title_ru' => $tru[$i],
+                    'title_en' => $ten[$i],
+                    'code' => 1,
+                    'credits' => $credits[$i],
+                    'semestr' => $semestr[$i],
+                    'lectures' => $lectures[$i],
+                    'practises' => $practises[$i],
+                    'labs' => $labs[$i],
                 );
+                Discipline::query()->create($discipline);
+                $d_id = Discipline::query()->orderByDesc('id')->first()->id;
+                $teacher = Adviser::all()->where('id', $teacherId[$i])->first();
+                $teacher->disciplines()->attach($d_id);
+
+                $teacherDisciplines = AdviserDiscipline::all()
+                    ->where('adviser_id', $teacherId[$i])
+                    ->where('discipline_id', $d_id);
+
+                foreach ($teacherDisciplines as $temp) {
+                    $temp->update(
+                        [
+                            'course' => $course[$i],
+                            'gr_id' => $gr_id[$i],
+                        ]
+                    );
+                }
             }
         }
         return view('/depAdmin/otherDepDisciplines');
@@ -154,6 +156,8 @@ class DepAdminController extends Controller
 
     public function uploadTeacherLoad(Request $request) {
 
+        $did = $request->input('tid');
+
         $fromDate = $request->input('fromDate');
         $toDate = $request->input('toDate');
         $ten = $request->input('ten');
@@ -162,13 +166,12 @@ class DepAdminController extends Controller
         $gr_id = $request->input('group');
 
         for($i = 0; $i < count($ten); $i++) {
-            $d_id = Discipline::query()->where('title_en', $ten[$i])->first()->id;
             $teacher = Adviser::all()->where('id', $teacherId[$i])->first();
-            $teacher->disciplines()->attach($d_id);
+            $teacher->disciplines()->attach($did[$i]);
 
             $teacherDisciplines = AdviserDiscipline::all()
                 ->where('adviser_id',$teacherId[$i])
-                ->where('discipline_id', $d_id);
+                ->where('discipline_id', $did[$i]);
             foreach ($teacherDisciplines as $temp){
                 $temp->update(
                     [

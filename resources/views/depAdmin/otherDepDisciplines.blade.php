@@ -32,7 +32,7 @@
                                 <th scope="col">Teacher</th>
                             </tr>
                         </thead>
-
+                        @for($i = 1; $i <= 5; $i++)
                         <tbody >
                             <tr>
                                 <td>
@@ -45,13 +45,25 @@
                                     <input type="text" name="ten[]" id="">
                                 </td>
                                 <td>
-                                    <input type="text" name="eduProgram[]" id="">
+                                    <select name="eduProgram[]" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+                                        <option>Educational Programs:</option>
+                                        {{$eduPrograms = \App\Models\EducationalProgram::all()}}
+                                        @foreach ($eduPrograms as $program ){
+                                        <option  @if(!empty($eduProgram) && $eduProgram == $program->id) selected @endif value="{{$program->id}}">{{$program->title}}</option>
+                                        @endforeach
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="text" name="course[]" id="">
                                 </td>
                                 <td>
-                                    <input type="text" name="group[]" id="">
+                                    <select name="group[]" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+                                        <option>Groups:</option>
+                                        {{$groups = \App\Models\Group::all()}}
+                                        @foreach ($groups as $gr ){
+                                        <option  @if(!empty($group) && $group == $gr->id) selected @endif value="{{$gr->id}}">{{$gr->title}}</option>
+                                        @endforeach
+                                    </select>
                                 </td>
                                 <td>
                                     <input type="text" name="semestr[]" id="">
@@ -73,17 +85,24 @@
                                            value="0">
                                 </td>
                                 <td>
-                                    <input type="text" name="teacher[]" id="teacher" >
+                                    <select name="teacher[]" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
+                                        <option>Teachers:</option>
+                                        {{$teachers = \App\Models\Adviser::all()}}
+                                        @foreach ($teachers as $t ){
+                                        <option  @if(!empty($teacher) && $teacher == $t->id) selected @endif value="{{$t->id}}">{{$t->name. " " . $t->surname}}</option>
+                                        @endforeach
+                                    </select>
                                 </td>
                             </tr>
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="13" style="text-align: left;">
-                                    <input type="button" class="btn btn-lg btn-block" id="addrowOther" value="add" />
-                                </td>
-                            </tr>
-                        </tfoot>
+                        @endfor
+{{--                        <tfoot>--}}
+{{--                            <tr>--}}
+{{--                                <td colspan="13" style="text-align: left;">--}}
+{{--                                    <input type="button" class="btn btn-lg btn-block" id="addrowOther" value="add" />--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+{{--                        </tfoot>--}}
 
                     </table>
                     <button type="submit" class="btn btn-success">Upload Disciplines</button>

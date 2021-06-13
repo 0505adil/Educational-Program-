@@ -1,20 +1,21 @@
 
-<div>
+<div class="razmer">
+    <p class="pb-3">Оқу- әдістеме жұмысы / Учебно-методическая работа / Academic and methodological activities</p>
     <table border="1" class="pps3">
         <thead>
-        <tr>
-            <th rowspan="2">
+        <tr >
+            <th class="p-3" rowspan="2">
                 Рет <br>саны <br>
                 №п.п№
 
             </th>
-            <th rowspan="2">
+            <th  class="p-3" rowspan="2">
                 Жұмыс аталуы, орындалу мерзімі <br>
                 Наименование работ, срок выполнения <br>
                 Activities, time frame
 
             </th>
-            <th colspan="2">
+            <th class="p-3" colspan="2">
                 Жұмыс көлемі <br>
                 Объем работы <br>
                 (сағат / часы) <br>
@@ -24,12 +25,12 @@
             </th>
         </tr>
         <tr>
-            <th>
+            <th class="p-3">
                 Жоспардың орындалу <br>уақыты <br>
                 Срок  выполения плана <br>
                 Time frame
             </th>
-            <th>Жоспардың орындалуы <br>
+            <th class="p-3">Жоспардың орындалуы <br>
                 Фактическое <br>
                 выполнение плана <br>
                 Implementation
@@ -353,7 +354,7 @@
             <td><input type="text" class="res"></td>
         </tr>
         <tr>
-            <td colspan="2">Барлығы        Всего        Total </td>
+            <td colspan="2" class="p-5">Барлығы        Всего        Total </td>
             <td><input type="text" class="res31"></td>
             <td><input type="text" class="res32"></td>
         </tr>

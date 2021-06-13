@@ -6,6 +6,7 @@ body .text-center {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #212529;
+  width: 100%;
 }
 
 .form-signin {
@@ -114,14 +115,11 @@ th.forVer {
 }
 
 p.vertical {
-  width: 150px;
-  transform: rotate(-90deg);
+  width: 100%;
 }
 
 p.verticalBig {
-  height: 230px;
-  width: 250px;
-  transform: rotate(-90deg);
+  width: 100%;
 }
 
 .pps2 td, th {
@@ -134,6 +132,65 @@ p.verticalBig {
 
 .pps4 td, th {
   width: 400px;
+}
+
+.pps input {
+  border: 0;
+  background-color: inherit;
+}
+
+.pps {
+  font-size: 9px;
+  width: 700px;
+  height: auto;
+}
+
+.pps2 input {
+  border: 0;
+  background-color: inherit;
+  width: 35%;
+}
+
+.pps2 td {
+  padding-left: 25px;
+}
+
+.pps3 input {
+  border: 0;
+  background-color: inherit;
+  width: 35%;
+}
+
+.pps4 input {
+  border: 0;
+  background-color: inherit;
+  width: 35%;
+}
+
+.pps42 input {
+  border: 0;
+  background-color: inherit;
+  width: 35%;
+}
+
+.pps5 input {
+  border: 0;
+  background-color: inherit;
+  width: 35%;
+}
+
+.pps6 input {
+  border: 0;
+  background-color: inherit;
+  width: 35%;
+}
+
+.razmer {
+  width: 700px;
+}
+
+.pps td {
+  width: 80px;
 }
 
 /*!

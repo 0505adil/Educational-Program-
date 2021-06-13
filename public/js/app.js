@@ -2119,6 +2119,80 @@ $(document).ready(function () {
       $(".pps6 .res".concat(_j4)).val(sum);
     }
   });
+  $("#course").on('input', function () {
+    if ($(this).val() == 1) {
+      var sel = document.getElementById('semestr');
+      $("#semestr").empty();
+      var opt = document.createElement('option');
+      opt.appendChild(document.createTextNode('1'));
+      opt.value = '1';
+      sel.appendChild(opt);
+      opt = document.createElement('option');
+      opt.appendChild(document.createTextNode('2'));
+      opt.value = '2';
+      sel.appendChild(opt);
+    } else if ($(this).val() == 2) {
+      var _sel = document.getElementById('semestr');
+
+      $("#semestr").empty();
+
+      var _opt = document.createElement('option');
+
+      _opt.appendChild(document.createTextNode('3'));
+
+      _opt.value = '1';
+
+      _sel.appendChild(_opt);
+
+      _opt = document.createElement('option');
+
+      _opt.appendChild(document.createTextNode('4'));
+
+      _opt.value = '2';
+
+      _sel.appendChild(_opt);
+    } else if ($(this).val() == 3) {
+      var _sel2 = document.getElementById('semestr');
+
+      $("#semestr").empty();
+
+      var _opt2 = document.createElement('option');
+
+      _opt2.appendChild(document.createTextNode('5'));
+
+      _opt2.value = '1';
+
+      _sel2.appendChild(_opt2);
+
+      _opt2 = document.createElement('option');
+
+      _opt2.appendChild(document.createTextNode('6'));
+
+      _opt2.value = '2';
+
+      _sel2.appendChild(_opt2);
+    } else if ($(this).val() == 4) {
+      var _sel3 = document.getElementById('semestr');
+
+      $("#semestr").empty();
+
+      var _opt3 = document.createElement('option');
+
+      _opt3.appendChild(document.createTextNode('7'));
+
+      _opt3.value = '1';
+
+      _sel3.appendChild(_opt3);
+
+      _opt3 = document.createElement('option');
+
+      _opt3.appendChild(document.createTextNode('8'));
+
+      _opt3.value = '2';
+
+      _sel3.appendChild(_opt3);
+    }
+  });
 });
 
 /***/ }),

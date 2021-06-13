@@ -303,6 +303,60 @@ $(document).ready(function () {
             $(`.pps6 .res${j}`).val(sum)
         }
     })
+
+    $("#course").on('input', function (){
+
+        if($(this).val() == 1){
+            let sel = document.getElementById('semestr');
+            $("#semestr").empty()
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('1') );
+            opt.value = '1';
+            sel.appendChild(opt);
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('2') );
+            opt.value = '2';
+            sel.appendChild(opt);
+
+        } else if($(this).val() == 2) {
+            let sel = document.getElementById('semestr');
+            $("#semestr").empty()
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('3') );
+            opt.value = '1';
+            sel.appendChild(opt);
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('4') );
+            opt.value = '2';
+            sel.appendChild(opt);
+
+        } else if($(this).val() == 3) {
+            let sel = document.getElementById('semestr');
+            $("#semestr").empty()
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('5') );
+            opt.value = '1';
+            sel.appendChild(opt);
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('6') );
+            opt.value = '2';
+            sel.appendChild(opt);
+
+        } else if($(this).val() == 4) {
+            let sel = document.getElementById('semestr');
+            $("#semestr").empty()
+            let opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('7') );
+            opt.value = '1';
+            sel.appendChild(opt);
+            opt = document.createElement('option');
+            opt.appendChild( document.createTextNode('8') );
+            opt.value = '2';
+            sel.appendChild(opt);
+
+        }
+    })
+
 });
 
 

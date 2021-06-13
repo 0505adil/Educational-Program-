@@ -1,25 +1,26 @@
 
-<div>
+<div class="razmer">
+    <p class="mb-3">Учебная работа по проверке успеваемости обучающихся</p>
     <table border="1" class="pps2">
         <thead>
         <tr>
-            <th>
+            <th class="p-3">
                 Оқу жүктемесі <br>
                 Учебная нагрузка <br>
                 Teaching workload (hrs)
             </th>
-            <th>
+            <th class="p-3">
                 СРСП, <br>
                 СРС
             </th>
-            <th>
+            <th class="p-3">
                 Прием рубежного <br> контроля 1,2 , <br>   0,25 часов <br> на студента
             </th>
-            <th>
+            <th class="p-3">
                 Прием экзамена
             </th>
-            <th>Курсовая работа, <br> текущий контроль</th>
-            <th>Сағ. барлығы <br>
+            <th class="p-3">Курсовая работа, <br> текущий контроль</th>
+            <th class="p-3">Сағ. барлығы <br>
                 Всего. Часов <br>
                 Total hours
             </th>

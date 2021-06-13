@@ -1,25 +1,25 @@
 
-<div>
-    <h2>4. Ғылыми-зерттеу жұмыс / Научно-исследовательская работа / Research activities
+<div class="razmer">
+    <p>4. Ғылыми-зерттеу жұмыс / Научно-исследовательская работа / Research activities
         4.1. Тапсырыс бойынша, грант, ғылыми стипендия және т.б. / Заказные, гранты, научные стипендии и др. /
         Commissioned work, grants, research scholarships etc.
-    </h2>
+    </p>
     <table border="1" class="pps4">
         <thead>
         <tr>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Рет саны <br>
                 №п.п <br>
                 №
 
             </th>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Жұмыс аталуы <br>
                 Наименование работ <br>
                 Activities
 
             </th>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Жұмыс көлемі <br>
                 Объем работы <br>
                 (тыс. тенге) <br>
@@ -27,13 +27,13 @@
                 (thousand tenge)
 
             </th>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Қатысу үлесі <br>
                 Доля участия, % <br>
                 Participation share, %
 
             </th>
-            <th colspan="2">Жұмыс көлемі <br>
+            <th class="p-3" colspan="2">Жұмыс көлемі <br>
                 Объем работы <br>
                 (сағат / часы) <br>
                 Workload <br>
@@ -41,11 +41,11 @@
             </th>
         </tr>
         <tr>
-            <th>Жоспар <br>
+            <th class="p-3" >Жоспар <br>
                 План <br>
                 Plan
             </th>
-            <th>Орындалуы <br>
+            <th class="p-3">Орындалуы <br>
                 Выполнение <br>
                 Implementation
             </th>
@@ -53,7 +53,7 @@
         </thead>
         <tbody>
         <tr class="pps4r1">
-            <td>
+            <td class="p-3">
                 1
             </td>
             <td class="p-4">
@@ -68,7 +68,7 @@
             <td><input class="part2" type="text"></td>
         </tr>
         <tr class="pps4r1">
-            <td>
+            <td class="p-3">
                 2
             </td>
             <td class="p-4">
@@ -82,7 +82,7 @@
             <td><input class="part2" type="text"></td>
         </tr>
         <tr class="pps4r1">
-            <td>
+            <td class="p-3">
                 3
             </td>
             <td class="p-4">
@@ -97,7 +97,7 @@
             <td><input class="part2" type="text"></td>
         </tr>
         <tr class="pps4r1">
-            <td>
+            <td class="p-3">
                 4
             </td>
             <td class="p-4">
@@ -114,7 +114,7 @@
             <td><input class="part2" type="text"></td>
         </tr>
         <tr class="pps4r1">
-            <td>
+            <td class="p-3">
                 5
             </td>
             <td class="p-4">
@@ -135,7 +135,7 @@
             <td><input class="part2" type="text"></td>
         </tr>
         <tr>
-            <td colspan="2">Барлығы        Всего        Total</td>
+            <td colspan="2" class="pl-5">Барлығы        Всего        Total</td>
             <td></td>
             <td></td>
             <td><input type="text" class="res1"></td>
@@ -145,27 +145,27 @@
     </table>
 </div>
 <br><br>
-<h2>4.2. Бюджеттік ҒЗЖ және СҒЗЖ жетекшілік ету / Бюджетные НИР и руководство НИРС /
+<p>4.2. Бюджеттік ҒЗЖ және СҒЗЖ жетекшілік ету / Бюджетные НИР и руководство НИРС /<br>
     Budget research activities and supervision of students’ research activities
-    <br><br>
-</h2>
-<div>
+
+</p>
+<div class="razmer">
     <table border="1" class="pps42">
         <thead>
         <tr>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Рет саны <br>
                 №п.п <br>
                 №
 
             </th>
-            <th rowspan="2">
+            <th class="p-3" rowspan="2">
                 Жұмыс аталуы <br>
                 Наименование работ <br>
                 Activities
 
             </th>
-            <th colspan="2">Жұмыс көлемі <br>
+            <th class="p-3" colspan="2">Жұмыс көлемі <br>
                 Объем работы <br>
                 (сағат / часы) <br>
                 Workload <br>
@@ -173,11 +173,11 @@
             </th>
         </tr>
         <tr>
-            <th>Жоспар <br>
+            <th class="p-3">Жоспар <br>
                 План <br>
                 Plan
             </th>
-            <th>Орындалуы <br>
+            <th class="p-3">Орындалуы <br>
                 Выполнение <br>
                 Implementation
             </th>
@@ -185,25 +185,25 @@
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
+                <td class="p-3">1</td>
                 <td><input type="text"></td>
                 <td><input type="text" class="part1"></td>
                 <td><input type="text" class="part2"></td>
             </tr>
             <tr>
-                <td>2</td>
+                <td class="p-3">2</td>
                 <td><input type="text"></td>
                 <td><input type="text" class="part1"></td>
                 <td><input type="text" class="part2"></td>
             </tr>
             <tr>
-                <td>3</td>
+                <td class="p-3">3</td>
                 <td><input type="text"></td>
                 <td><input type="text" class="part1"></td>
                 <td><input type="text" class="part2"></td>
             </tr>
             <tr>
-                <td colspan="2">Барлығы        Всего        Total</td>
+                <td colspan="2" class="p-3">Барлығы        Всего        Total</td>
                 <td><input type="text" class="res1"></td>
                 <td><input type="text" class="res2"></td>
             </tr>

@@ -30,7 +30,7 @@ class ZavkafController extends Controller
     }
 
     public function news(){
-        return view('zavkaf/news);
+        return view('zavkaf/news');
     }
 
 }

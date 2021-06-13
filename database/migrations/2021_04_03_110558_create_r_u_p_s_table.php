@@ -18,8 +18,8 @@ class CreateRUPSTable extends Migration
             $table->string('disCycle');
             $table->string('disComponent');
 //            $table->unsignedBigInteger('discipline_id');
-            $table->date('fromDate');
-            $table->date('toDate');
+            $table->integer('fromDate');
+            $table->integer('toDate');
             $table->integer('edProgram_id');
             $table->timestamps();
         });

@@ -47,7 +47,8 @@
                                 @if(!is_null($rup->discipline))
                                     <tr>
                                         <td>
-                                            <input type="text" name="tkz[]" id="" value="{{ $rup->discipline->title_kz}}">
+                                            <input type="text" name="tkz[]" id="" value="{{$rup->discipline->title_kz}}">
+                                            <input type="text" hidden name="tid[]" value="{{ $rup->discipline->id }}">
                                         </td>
                                         <td>
                                             <input type="text" name="tru[]" id="" value="{{ $rup->discipline->title_ru}}">

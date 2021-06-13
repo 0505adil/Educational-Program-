@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Adviser;
+use App\Models\AdviserDiscipline;
 use App\Models\Discipline;
 use App\Models\Group;
 use App\Models\Student;
 use App\Models\User;
 
+use Illuminate\Support\Facades\DB;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -31,9 +34,11 @@ class tProfileController extends Controller
     }
 
     public function syllabus(){
-        $discipilines = Discipline::all();
+        $discipilines = null;
         $groups = Group::query()->where('groups.adviser_id', Auth::user()->adviser->id);
         $semestr = 0;
+
+
         return view('adviser/tSyllabus')->with('disciplines', $discipilines)
             ->with('semestr', $semestr)
             ->with('groups', $groups);
@@ -43,14 +48,16 @@ class tProfileController extends Controller
         $semestr = $request->input('semestr');
         $course = $request->input('course');
         $eduProgram = $request->input('eduProgram');
-        $id = Auth::user()->id;
 
-        $filteredDisc = Discipline::all()->where('semestr',$semestr)
-                                            ->where('edProgram_id', $eduProgram);
+        $disciplinesIds = AdviserDiscipline::query()
+            ->where('course', $course)
+            ->pluck('discipline_id');
+
         $filteredDisc = Discipline::with('rup')
             ->join('r_u_p_s', 'r_u_p_s.id', 'disciplines.rup_id')
             ->where('r_u_p_s.edProgram_id', $eduProgram)
             ->where('semestr',$semestr)
+            ->whereIn('disciplines.id', $disciplinesIds)
             ->get();
 
 
@@ -121,6 +128,15 @@ class tProfileController extends Controller
 
 
     public function pps(){
-        return view('adviser/pps');
+
+        $discipineIds = AdviserDiscipline::query()
+            ->where('adviser_id', Auth::user()->adviser->id)
+            ->pluck('discipline_id');
+
+        $disciplines = Discipline::all()
+            ->whereIn('id', $discipineIds);
+
+
+        return view('adviser/pps')->with('disciplines', $disciplines);
     }
 }
