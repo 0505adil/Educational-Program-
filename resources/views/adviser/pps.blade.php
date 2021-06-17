@@ -23,8 +23,11 @@
 
     <div class="container col-12 pt-5">
 
-
+    @if($teacher != null)
+    <h2>Teacher Name: {{ $teacher->name. "   " .  $teacher->surname}}</h2>
+        @else
     <h2>Teacher Name: {{ Auth::user()->adviser->name. "   " .  Auth::user()->adviser->surname}}</h2>
+        @endif
     <div class="container p-5 col-12">
 
         @include('adviser.pps.teacherDisciplines')

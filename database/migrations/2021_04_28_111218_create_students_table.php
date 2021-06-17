@@ -21,6 +21,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->boolean('confirmed')->default(0);
+            $table->boolean('abroad')->default(0);
             $table->index('user_id');
             $table->index('gr_id');
         });

@@ -71,7 +71,8 @@
             </tr>
 
             </thead>
-            <tbody>{{ $i = 1 }}
+            <tbody>
+            <input type="text" value="{{ $i = 1 }}" hidden>
             @foreach($disciplines as $d)
                 <tr>
                     <td class="nomer">{{$i}}</td>

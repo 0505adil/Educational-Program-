@@ -30,8 +30,11 @@
                             <td>{{ $student->name. " " .$student->surname, $id = $student->id }}</td>
                             <td>
 
+                                @if($student->abroad == 1)
+                                <a href="report/for/abroad/{{$id}}">Dowload IEP</a>
+                                @else
                                 <a href="report/{{$id}}">Dowload IEP</a>
-
+                                @endif
                             </td>
                         </tr>
                     @endforeach

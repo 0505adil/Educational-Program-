@@ -59,6 +59,8 @@
                                     <th scope="col">Dicipline</th>
                                     <th scope="col">Credits</th>
                                     <th scope="col">Code</th>
+                                    <th scope="col">From Date</th>
+                                    <th scope="col">To Date</th>
                                 </tr>
                             </thead>
                             @if($disciplines != null)
@@ -70,6 +72,8 @@
                                         <td>{{$discipline->title_en}}</td>
                                         <td>{{$discipline->credits}}</td>
                                         <td>{{$discipline->code}}</td>
+                                        <td>{{$discipline->fromDate}}</td>
+                                        <td>{{$discipline->toDate}}</td>
                                     </tr>
                                 @endforeach
 
@@ -79,7 +83,7 @@
                         </table>
 
                             <select name="groupId" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" >
-                                <option{{$groups = \App\Models\Group::all()}}>Group:</option>
+                                <option{{$groups = \App\Models\Group::all()->where('adviser_id', Auth::user()->adviser->id)}}>Group:</option>
 
                                 @foreach ($groups as $group ){
                                 <option  @if(!empty($groupId) && $groupId == $group->id) selected @endif value="{{$group->id}}">{{$group->title}}</option>

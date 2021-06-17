@@ -7,9 +7,13 @@ use App\Models\AdviserDiscipline;
 use App\Models\Discipline;
 use App\Models\Group;
 use App\Models\Student;
+use App\Models\StudentDiscipline;
 use App\Models\User;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Storage;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -49,6 +53,7 @@ class tProfileController extends Controller
         $course = $request->input('course');
         $eduProgram = $request->input('eduProgram');
 
+//        dd($semestr);
         $disciplinesIds = AdviserDiscipline::query()
             ->where('course', $course)
             ->pluck('discipline_id');
@@ -59,7 +64,7 @@ class tProfileController extends Controller
             ->where('semestr',$semestr)
             ->whereIn('disciplines.id', $disciplinesIds)
             ->get();
-
+//    dd($filteredDisc);
 
         return view('adviser/tSyllabus')->with('disciplines', $filteredDisc)->with('semestr', $semestr)
             ->with('eduProgram', $eduProgram)->with('course', $course);
@@ -113,9 +118,13 @@ class tProfileController extends Controller
             ->first();
 
         $sid = $student->id;
-        $disciplines = Discipline::with(['users' => function($sd) use ($sid){
-            return $sd->where('student_id', $sid);
-        }])->get();
+        $disciplineIds = StudentDiscipline::query()
+            ->where('student_id', $sid)
+            ->where('approved', 1)
+            ->pluck('discipline_id');
+        $disciplines = Discipline::all()->whereIn('id', $disciplineIds);
+
+
 
 //        dd($student);
 //        $test = view('adviser.report')->render();
@@ -129,6 +138,7 @@ class tProfileController extends Controller
 
     public function pps(){
 
+        $teacher = null;
         $discipineIds = AdviserDiscipline::query()
             ->where('adviser_id', Auth::user()->adviser->id)
             ->pluck('discipline_id');
@@ -137,6 +147,20 @@ class tProfileController extends Controller
             ->whereIn('id', $discipineIds);
 
 
-        return view('adviser/pps')->with('disciplines', $disciplines);
+        return view('adviser/pps')->with('disciplines', $disciplines)->with('teacher', $teacher);
+    }
+
+    /**
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function reportForAbdroad($id){
+        $student = Student::query()->where('id', $id)->first();
+        $filename = $student->name.'_'.$student->surname.'_IUP.pdf';
+
+        $file=Storage::disk('public')->get($filename);
+
+        return (new Response($file, 200))
+            ->header('Content-Type', 'application/pdf');
+
     }
 }

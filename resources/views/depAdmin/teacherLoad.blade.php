@@ -15,11 +15,12 @@
             <div class="col-10 pt-4">
                 <form action="/depAdmin/uploadTeacherLoad">
                     <p>
-                        Teacer load for
+                        Teacher load for
                         <input type="text" name="fromDate">
                         -
                         <input type="text" name="toDate">
                         years
+
                     </p>
                     <div class="othrDisTable">
                         <table class="table table-bordered othrDis rup ">

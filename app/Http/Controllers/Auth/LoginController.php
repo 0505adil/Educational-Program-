@@ -41,7 +41,7 @@ class LoginController extends Controller
         } else if (auth()->user()->role == 4){
             return '/depAdmin';
         } else if (auth()->user()->role == 1){
-            return '/zavkaf';
+            return '/studentSyllabus';
         }
 
         Auth::logout();

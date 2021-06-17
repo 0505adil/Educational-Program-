@@ -55,6 +55,7 @@ class ProfileController extends Controller
 
     public function syllabus(){
         $approved = Auth::user()->student->confirmed;
+        $message = null;
 
         $disciplinesN = Discipline::select('disciplines.title_en', 'disciplines.id', 'disciplines.code', 'disciplines.credits')
             ->join('student_disciplines', 'student_disciplines.discipline_id', '=', 'disciplines.id')
@@ -68,7 +69,8 @@ class ProfileController extends Controller
         return view('student/syllabus')
             ->with('disciplines', $disciplinesN)
             ->with('disciplinesLeft', $disciplinesLeft)
-            ->with('approved', $approved);
+            ->with('approved', $approved)
+            ->with('message', $message);
     }
 
     /**
@@ -78,7 +80,7 @@ class ProfileController extends Controller
 
         $sign = $request->file('sign');
 
-
+        if (bcrypt($sign->getContent()) == Auth::user()->student->password){
             $disciplineIds = $request->input('toSend');
             $studentDisciplines = StudentDiscipline::all()
                 ->where('student_id', Auth::user()->student->id)
@@ -91,6 +93,13 @@ class ProfileController extends Controller
                     ]
                 );
             }
+        } else {
+            $message = "Incorrect sign!!!";
+            return redirect()->route('/syllabus');
+        }
+
+
+
 
         return view('/student/profile');
 
@@ -119,5 +128,25 @@ class ProfileController extends Controller
         return response()->streamDownload(function () use ($contents) {
             echo $contents;
         }, $filename);
+    }
+
+    public function iup(Request $request){
+        $file = $request->file('iup');
+
+//        dd($file->getContent());
+
+        $filenameWithExt = $file->getClientOriginalName();
+        //Get just filename
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // Get just ext
+        $extension = $file->getClientOriginalExtension();
+        // Filename to store
+        $fileNameToStore = Auth::user()->student->name.'_'.Auth::user()->student->surname.'_IUP.'.$extension;
+        // Upload Image
+
+        $path = $file->storeAs('public',$fileNameToStore);
+        Auth::user()->student->update(['confirmed' => 1]);
+
+        return redirect()->route('/syllabus');
     }
 }

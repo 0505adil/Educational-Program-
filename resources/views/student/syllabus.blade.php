@@ -12,7 +12,21 @@
                 </ul>
             </div>
             <div class="col-10 ">
-                @if($approved == 0)
+                @if(Auth::user()->student->abroad == 1 && $approved == 0)
+                    <div class="p-3">
+                        <form action="{{route('/syllabus/load')}}" method="post" enctype="multipart/form-data">
+                           @csrf
+                            <h3 class="mb-2 ">Please load own individual plan</h3>
+                            <input class="btn btn-dark" type="file" id="myFile" name="iup">
+                            <button type="submit" class="btn success">Load Discipline</button>
+                        </form>
+
+                    </div>
+                @elseif($approved == 0)
+                    @if($message != null )
+                        <h3>{{$message}}</h3>
+                    @endif
+
                     <div class="col-7">
                         <form action="/syllabus/confirm" method="post" enctype="multipart/form-data">
                             @csrf
@@ -84,6 +98,8 @@
                             <button type="submit" class="btn success">Add Discipline</button>
                         </form>
                     </div>
+
+
                 @else
                     <h1>You're already confirmed own individual educational program</h1>
                 @endif

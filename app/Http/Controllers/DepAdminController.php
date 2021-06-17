@@ -156,6 +156,7 @@ class DepAdminController extends Controller
 
     public function uploadTeacherLoad(Request $request) {
 
+
         $did = $request->input('tid');
 
         $fromDate = $request->input('fromDate');
